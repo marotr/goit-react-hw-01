@@ -1,0 +1,11 @@
+* {
+  list-style: none;
+}
+
+/* .name {
+} */
+
+.friendsContainer {
+  display: flex;
+  gap: 8px;
+}
