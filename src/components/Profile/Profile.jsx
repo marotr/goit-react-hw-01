@@ -1,26 +1,28 @@
-const Profile = ({ username, tag, location, avatar, stats}) => {
-    return (
-        <div> <div>
- <img
- src={avatar}
- alt="User avatar"
- />
- <p>{username}</p>
-            <p>@{ tag}</p>
- <p>{location}</p>
-</div>
 
-<ul>
-<li>
-                    <span>Followers { stats.followers}</span>
+import css from './Profile.module.css';
+const Profile = ({ username, tag, location, avatar, stats }) => {
+   
+    return (
+        <div className={css.profileContainer}>
+            <div>
+                <img src={avatar} alt="User avatar" width = "200" />
+
+                <p className = {css.username}>{username}</p>
+                <p className = {css.userInfo}>@{tag}</p>
+                <p className = {css.userInfo}>{location}</p>
+            </div>
+
+<ul className = {css.stats}>
+<li className = {css.statsItem}>
+                   Followers  <span className={css.statsValue}>{ stats.followers}</span>
  
  </li>
- <li>
- <span>Views {stats.views}</span>
+ <li className = {css.statsItem}>
+ Views <span className={css.statsValue}>{stats.views}</span>
 
  </li>
- <li>
- <span>Likes {stats.likes}</span>
+ <li className = {css.statsItem}>
+ Likes<span className={css.statsValue}> {stats.likes}</span>
 
  </li>
  </ul>

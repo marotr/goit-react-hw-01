@@ -1,11 +1,23 @@
-* {
-  list-style: none;
+.name {
+  font-size: 20px;
+  margin: 0;
 }
-
-/* .name {
-} */
+.offline {
+  color: red;
+}
+.online {
+  color: green;
+}
 
 .friendsContainer {
   display: flex;
-  gap: 8px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.FriendListItem {
+  border: 1px solid rgb(61, 58, 58);
+  border-radius: 5px;
+  padding: 10px;
+  width: 80px;
 }

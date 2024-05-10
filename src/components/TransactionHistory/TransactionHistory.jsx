@@ -1,41 +1,41 @@
-const TransactionItem = ({ type, amount, currency }) => {
+import clsx from 'clsx';
+import css from './TransactionHistory.module.css';
+
+const TransactionItem = ({ type, amount, currency, className }) => {
     return (
-        
-    <tr>
-                <td>{ type}</td>
-                <td>{ amount}</td>
-                <td>{ currency}</td>
-    </tr>
-    
-
-    )  
+        <tr className={className}> {/* Use className prop here */}
+            <td className={css.cell}>{type}</td>
+            <td className={css.cell}>{amount}</td>
+            <td className={css.cell}>{currency}</td>
+        </tr>
+    );  
 }
+
 const TransactionHistory = ({ transactions }) => {
-  return (
-      <div>
-          <table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Amount</th>
-      <th>Currency</th>
-    </tr>
-  </thead>
-
-  <tbody>
-                  {transactions.map(transaction =>(
-                      <TransactionItem
-                          key = {transaction.id}
-                          type={transaction.type}
-                          amount={transaction.amount}
-                          currency={ transaction.currency} />)
-    )}
-  </tbody>
-</table>
-
-    </div>
-  )
+    return (
+        <div>
+            <table className={css.table}>
+                <thead>
+                    <tr className={css.tableHeader}>
+                        <th className={css.cell}>Type</th>
+                        <th className={css.cell}>Amount</th>
+                        <th className={css.cell}>Currency</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {transactions.map((transaction, index) => (
+                        <TransactionItem
+                            key={transaction.id}
+                            type={transaction.type}
+                            amount={transaction.amount}
+                            currency={transaction.currency}
+                            className={clsx(index % 2 === 0 ? css.greyRow : css.whiteRow)}
+                        />
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    );
 }
 
-export default TransactionHistory
-
+export default TransactionHistory;
